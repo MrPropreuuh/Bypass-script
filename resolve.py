@@ -65,6 +65,10 @@ while True:
     service = ChromeService(driver_path)
     chrome_options = Options()
     chrome_options.add_argument("--headless")
+    # Désactiver les logs de l'infobulle
+    chrome_options.add_argument("--disable-logging")
+    # Désactiver les infos de débogage
+    chrome_options.add_argument("--log-level=3")
     chrome_options.add_argument("--disable-gpu")  # Désactiver l'accélération GPU pour le mode sans tête
     driver = webdriver.Chrome(service=service, options=chrome_options)
     driver.get(login_url)
