@@ -135,6 +135,7 @@ while True:
                                 vote_button = driver.find_element(By.ID, "vote-button")
                                 vote_button.click()
                                 print("Captcha réussit.")
+                                time.sleep(2)
                                 # Basculez vers la nouvelle fenêtre (le dernier onglet)
                                 driver.switch_to.window(driver.window_handles[-1])
 
@@ -145,6 +146,7 @@ while True:
                                 valider_button = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'button.btn.btn-primary.d-block.mx-auto.mb-3')))
                                 valider_button.click()
                                 print("Vote validé avec succès.")
+                                time.sleep(1.5)
 
                                 # Supprimez l'image téléchargée
                                 if os.path.exists(image_path):
@@ -167,7 +169,7 @@ while True:
     heure_prochain_vote = (datetime.datetime.now() + datetime.timedelta(hours=1, minutes=31)).strftime("%H:%M")
     print(f"Heure du vote réalisé : {Fore.RED}{heure_vote}{Fore.RESET} - Heure du prochain vote : {Fore.GREEN}{heure_prochain_vote}{Fore.RESET}")
     # Calculez le temps restant avant le prochain vote (1 heure et 31 minutes)
-    temps_restant = datetime.timedelta(hours=1, minutes=31)
+    temps_restant = datetime.timedelta(hours=1, minutes=30)
 
     # Affichez le temps restant à chaque seconde
     while temps_restant.total_seconds() > 0:
